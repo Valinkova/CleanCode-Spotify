@@ -1,9 +1,9 @@
 package spotify.command.songCommand;
 
-import spotify.service.Player;
-import spotify.service.SongsList;
-import spotify.service.PlaylistsRepo;
 import spotify.model.UsersData;
+import spotify.service.Player;
+import spotify.service.PlaylistsRepo;
+import spotify.service.SongsList;
 
 public interface SongCommand {
     String INSERTED_PARAMITERS_DELIMITER = " ";

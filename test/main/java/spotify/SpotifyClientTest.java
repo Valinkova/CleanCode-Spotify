@@ -18,16 +18,18 @@ public class SpotifyClientTest {
     private Socket clientSocket;
     @Mock
     private ClientPlayer player;
+    @Mock
+    private ClientSocketFactory clientSocketFactory;
     private SpotifyClient spotifyClient;
     private String disconnectCommand;
     private String playCommand;
     private InputStream inputStream;
     private OutputStream outputStream;
 
-
     @Before
-    public void setUp() {
-        spotifyClient = new SpotifyClient(clientSocket, player);
+    public void setUp() throws IOException {
+        when(clientSocketFactory.getSocket()).thenReturn(clientSocket);
+        spotifyClient = new SpotifyClient(clientSocketFactory, player);
         outputStream = new ByteArrayOutputStream();
         disconnectCommand = "disconnect";
         playCommand = "play";

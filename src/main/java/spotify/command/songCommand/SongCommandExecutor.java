@@ -2,10 +2,10 @@ package spotify.command.songCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spotify.service.Player;
-import spotify.service.SongsList;
-import spotify.service.PlaylistsRepo;
 import spotify.model.UsersData;
+import spotify.service.Player;
+import spotify.service.PlaylistsRepo;
+import spotify.service.SongsList;
 
 import java.util.Arrays;
 import java.util.HashMap;

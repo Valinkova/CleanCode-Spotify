@@ -2,10 +2,10 @@ package spotify.command.songCommand;
 
 import org.springframework.stereotype.Component;
 import spotify.command.CommandName;
-import spotify.service.Player;
-import spotify.service.SongsList;
-import spotify.service.PlaylistsRepo;
 import spotify.model.UsersData;
+import spotify.service.Player;
+import spotify.service.PlaylistsRepo;
+import spotify.service.SongsList;
 
 /**
  * This class performs the stopping of song

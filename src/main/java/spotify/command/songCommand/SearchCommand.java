@@ -2,11 +2,11 @@ package spotify.command.songCommand;
 
 import org.springframework.stereotype.Component;
 import spotify.command.CommandName;
-import spotify.service.Player;
-import spotify.service.SongsList;
-import spotify.service.PlaylistsRepo;
 import spotify.model.Song;
 import spotify.model.UsersData;
+import spotify.service.Player;
+import spotify.service.PlaylistsRepo;
+import spotify.service.SongsList;
 
 import java.util.List;
 import java.util.stream.Collectors;

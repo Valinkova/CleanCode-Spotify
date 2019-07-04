@@ -28,8 +28,9 @@ public class SpotifyClient {
     private ClientPlayer player;
 
     @Autowired
-    public SpotifyClient(Socket clientSocket, ClientPlayer player) {
-        this.clientSocket = clientSocket;
+    public SpotifyClient(ClientSocketFactory clientSocketFactory,
+                         ClientPlayer player) throws IOException {
+        this.clientSocket = clientSocketFactory.getSocket();
         this.player = player;
     }
 
@@ -93,6 +94,7 @@ public class SpotifyClient {
 
     /**
      * This method run the client
+     *
      * @param inputStream This is the stream from where read the user's input
      */
     public void run(InputStream inputStream) {

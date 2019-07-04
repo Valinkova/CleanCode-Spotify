@@ -46,13 +46,17 @@ public class ClientProcessorTest {
     private OutputStream outputStream;
     @Mock
     private UsersData usersData;
+    @Mock
+    private ClientSocketFactory clientSocketFactory;
     private ClientProcessor clientProcessor;
     private String commandName;
     private InputStream inputStream;
 
     @Before
-    public void setUp() {
-        clientProcessor = new ClientProcessor(playlistsRepo, clientSocket,
+    public void setUp() throws IOException {
+        when(clientSocketFactory.getSocket()).thenReturn(clientSocket);
+        clientProcessor = new ClientProcessor(playlistsRepo,
+                clientSocketFactory,
                 songsList, usersRepo,
                 userCommandExecutor, songCommandExecutor, userCommands,
                 songCommands);

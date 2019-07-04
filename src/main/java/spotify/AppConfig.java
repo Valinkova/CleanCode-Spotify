@@ -3,8 +3,6 @@ package spotify;
 import org.springframework.context.annotation.Bean;
 import spotify.command.CommandName;
 
-import java.io.IOException;
-import java.net.Socket;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,11 +10,6 @@ import java.util.stream.Collectors;
 
 public class AppConfig {
     private static final String LOCALHOST = "localhost";
-
-    @Bean
-    public Socket getClientSocket() throws IOException {
-        return new Socket(LOCALHOST, SpotifyServer.PORT);
-    }
 
     @Bean({"userCommands"})
     public Set<String> getUserCommands() {

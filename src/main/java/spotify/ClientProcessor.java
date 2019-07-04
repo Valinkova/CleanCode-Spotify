@@ -3,21 +3,18 @@ package spotify;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
-import spotify.command.CommandName;
 import spotify.command.songCommand.SongCommandExecutor;
 import spotify.command.userCommand.UserCommandExecutor;
-import spotify.service.PlaylistsRepo;
 import spotify.model.UsersData;
-import spotify.service.UsersRepo;
 import spotify.service.Player;
+import spotify.service.PlaylistsRepo;
 import spotify.service.SongsList;
+import spotify.service.UsersRepo;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.EnumSet;
 import java.util.Set;
 
 @Import(AppConfig.class)
@@ -44,16 +41,16 @@ public class ClientProcessor extends Thread {
 
     @Autowired
     public ClientProcessor(PlaylistsRepo playlistsRepo,
-                           Socket clientSocket,
+                           ClientSocketFactory clientSocketFactory,
                            SongsList songsList,
                            UsersRepo usersRepo,
                            UserCommandExecutor userCommandExecutor,
                            SongCommandExecutor songCommandExecutor,
                            Set<String> userCommands,
-                           Set<String> songCommands) {
+                           Set<String> songCommands) throws IOException {
 
         this.songsList = songsList;
-        this.clientSocket = clientSocket;
+        this.clientSocket = clientSocketFactory.getSocket();
         this.usersRepo = usersRepo;
         player = new Player();
         usersData = new UsersData();
